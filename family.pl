@@ -1,6 +1,4 @@
 
-% first example...
-
 person(nick).
 person(ellie).
 person(hannah).
@@ -14,6 +12,18 @@ parent(nick,molly).
 parent(jan,nick).
 parent(jan,kate).
 
-sibling(X,Y) :- parent(P,X), parent(P,Y), X \= Y.
+sibling(X,Y) :-
+    parent(P,X),
+    parent(P,Y),
+    X \= Y.
 
-main(S) :- sibling(hannah,S).
+sisters(A,L) :-
+    findall(X, sibling(A,X), L).
+
+run1 :- sibling(hannah,X), write(X), nl, fail.
+
+run2 :- sisters(hannah,L), write(L), nl.
+
+run :- run2. %select here
+
+main :- (run; halt), halt.
