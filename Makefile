@@ -1,4 +1,4 @@
-top: run-lang2
+top: run-lang3
 
 run-%:
 	gprolog --consult-file $*.pl --query-goal 'main'
