@@ -1,2 +1,4 @@
-top:
-	gprolog --consult-file family.pl --query-goal 'main'
+top: run-lang1
+
+run-%:
+	gprolog --consult-file $*.pl --query-goal 'main'
